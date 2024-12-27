@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        font-family: Poppins, 'Segoe UI',  sans-serif;
+        font-family: 12px;
+        text-align: center;
+    }
+    body{
+        min-height: 100vh;
+        background-image: url(signup.jpg);
+        background-size: cover;
+        background-position: right;
+        overflow: hidden;
+
+    }
+    .top{
+        box-sizing: border-box;
+        background-color: white;
+        height: 100vh;
+        width: max(40%, 600px);
+        padding: 10px;
+        border-radius: 0 22px 22px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    h1{
+        font-size: 3rem;  /* 3 times than normal font */
+        font-weight: 800;
+        
+    }
+    form{
+        width: min(400px, 100%) ;
+        margin-top: 22px;
+        margin-bottom: 52px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 11px;
+    }
+    form >div{
+        width:100%;
+        display: flex;
+        justify-content: center;
+    }
+    form label{
+        flex-shrink: 0;
+        height: 52px;
+        width: 52px;
+        background-color:darkblue;
+        border-radius: 11px 0 0 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+   

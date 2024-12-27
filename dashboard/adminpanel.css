@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    flex-direction: row;
+    background-color: #f4f4f4;
+    height: 100vh;
+}
+
+/* Sidebar Styling for Desktop */
+.sidebar {
+    width: 250px;
+    background-color: black;
+    color: #ecf0f1;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sidebar h2 {
+    margin-top:20px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: rgb(11, 194, 245);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+    
+}
+
+.sidebar ul li a:hover {
+    background-color: #34495e;
+}
+
+.sidebar .btn {
+    padding: 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar .btn:hover {
+    background-color: #c0392b;
+}
+
+/* Content Styling */
+.content {
+    margin-left: 250px; /* Space for the sidebar */
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2315bb;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #2980b9;
+}
+
+.card p {
+    margin-bottom: 15px;
+    color: #7f8c8d;
+}
+
+.card .btn {
+    padding: 10px 20px;
+    background-color: #2A2A2A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card .btn:hover {
+    background-color: #4f4f4f;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        gap: 10px;
+        font-size: 10px;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+    }
+    .btn {
+        font-size: 10px;
+    }
+}

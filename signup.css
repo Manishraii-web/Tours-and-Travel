@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        font-family: Poppins, 'Segoe UI',  sans-serif;
+        font-family: 12px;
+        text-align: center;
+    }
+    body{
+        min-height: 100vh;
+        background-image: url(signup.jpg);
+        background-size:cover;
+        background-position: right;
+        overflow: hidden;
+
+    }
+    .top{
+        margin-left: 25%;
+        box-sizing: border-box;
+        background-color:transparent;  
+        height: 83vh;
+        width: max(50%, 700px);
+        padding: 10px;
+        border-radius:  22px 22px 22px 22px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    h1{
+        font-size: 3rem;  /* 3 times than normal font */
+        font-weight: 800;
+        
+    }
+    form{
+        justify-content: center;
+        width: min(400px, 100%) ;
+        margin-top: 22px;
+        margin-bottom: 52px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 11px;
+    }
+    form >div{
+        width:100%;
+        display: flex;
+        justify-content: center;
+    }
+    form label{
+        flex-shrink: 0;
+        height: 52px;
+        width: 52px;
+        background-color:darkblue;
+        border-radius: 11px 0 0 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        filter: none;
+       
+     
+    }
+    form input{
+        box-sizing: border-box;
+        flex-grow: 1;
+        min-width: 0;
+        height: 52px;
+        padding: 1em;
+        font: inherit;
+        border-radius: 0 30px 12px 0;
+        border: 1 px;
+        border-left: none;
+        background-color: blanchedalmond;
+        transition: 150ms ease;
+    }
+    form input:hover{
+        border-color: red;
+    }
+    form input:focus{
+        outline: none;
+        /* border-color: yellow; */
+    }
+    div:has(input:focus) > label{  /* one color change  where you click */
+        background-color: black;
+    }
+    form input::placeholder{
+        color: rgba(14, 59, 164, 0.596);
+    }
+    form button{
+        margin-top: 12px;
+        border: none;
+        padding: 10px;
+        border-radius: 12px;
+        width: 12em;
+        color: white;
+        background-color:darkblue;
+        font-weight: 600;
+        /* font: inherit; */
+        text-transform: uppercase;
+        cursor: pointer;
+        
+    }
+    form button:hover{ /*chnage to black while clickin/poinitng cursor at signup button */
+        background-color: black;
+    }
+    p{
+        color: red;
+    }
+   a{
+    text-decoration: none;
+    color: blue;
+   }
+   a:hover{
+    text-decoration: underline; /*underline show while touching signup butn */
+   }
+   @media(max-width:1100px) {
+    .top{
+        width: min(600px, 100%);
+        border-radius: 0;
+    }
+   }
+   .incorrect input {
+    border-color: red;
+}
+
+.incorrect label {
+    background-color: red;
+    color: white; /* To make the label text white for better visibility */
+}
+
+#error-message {
+    color: red; /* To show error messages in red */
+    font-size: 1rem;
+    margin-top: 10px;
+}
+.head{
+    display: flex;
+            background-color:  #34549b;
+            align-items: center;
+            max-width: 100%;
+            justify-content: space-between;
+            height: 60px;;
+}
+.head img{
+         margin-top: 2 px;
+        height: 35px;
+}
+.head p{
+            color: white;
+            position: absolute;
+            left: 4%;
+            top:1;
+            display: flex;
+            font-size: 14px;
+        }
+.footer{
+     background-color:  #34549b;
+     width: 100%;
+     height: 80px;
+  }
