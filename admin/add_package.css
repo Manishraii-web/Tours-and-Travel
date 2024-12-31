@@ -1,0 +1,125 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+.header {
+    display: flex;
+    background-color: #34549b;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start; 
+    height: 60px;
+    position: sticky;
+    top: 0;
+    padding: 0 20px; 
+}
+
+.header img {
+    margin-top: 2px;
+    height: 35px;
+}
+
+.header p {
+    color: white;
+    margin-left: 10px; 
+    font-size: 14px; 
+}
+
+nav ul {
+    display: flex;
+    gap: 20px; 
+    list-style: none;
+    margin-right: 20px; 
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #fff; 
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 800px; 
+    margin: 50px auto; 
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    width: 100%;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    height: 100px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"] {
+    background-color: #3498db; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.contact-info {
+    background-color: #34549b;
+    padding: 10px 20px; 
+    text-align: center; 
+}
+
+.contact-info p {
+    margin: 0;
+    color: white;
+}
+
+.contact-info p i {
+    margin-right: 5px; 
+}

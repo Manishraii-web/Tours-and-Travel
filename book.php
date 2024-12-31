@@ -6,61 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yatra Tours & Travels</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <link rel="stylesheet" href="book.css">
+    <link rel="stylesheet" href="book.css"> 
 </head>
 
 <body>
 
-   <?php
+    <?php
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
-    if($_SERVER['REQUEST_METHOD'] =='POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $name = $_POST['name'] ?? '';
-    $noofpeople = $_POST['noofpeople'] ?? '';
-    $dot= $_POST['dot'] ?? '';
-    $phone= $_POST['phone'] ?? '';
-    $country= $_POST['country'] ?? '';
-    $message= $_POST['message'] ?? '';
+        $name = $_POST['name'] ?? '';
+        $noofpeople = $_POST['noofpeople'] ?? '';
+        $dot = $_POST['dot'] ?? '';
+        $phone = $_POST['phone'] ?? '';
+        $country = $_POST['country'] ?? '';
+        $message = $_POST['message'] ?? '';
 
-    $servername = "localhost";
-    $username = "root";
-    $db_password = ""; // Database password
-    $database = "cwhdb";
+        $servername = "localhost";
+        $username = "root";
+        $db_password = ""; // Database password
+        $database = "cwhdb"; // Replace with your actual database name
 
-    $conn = mysqli_connect($servername, $username, $db_password, $database);
+        $conn = mysqli_connect($servername, $username, $db_password, $database);
 
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+
+        $name = mysqli_real_escape_string($conn, $name);
+        $noofpeople = mysqli_real_escape_string($conn, $noofpeople);
+        $dot = mysqli_real_escape_string($conn, $dot);
+        $phone = mysqli_real_escape_string($conn, $phone);
+        $country = mysqli_real_escape_string($conn, $country);
+        $message = mysqli_real_escape_string($conn, $message);
+
+        $current_datetime = date("Y-m-d H:i:s");
+
+        $sql = "INSERT INTO `book_table` (`name`, `noofpeople`, `dot`, `phone`, `country`, `message`, `datetime`) 
+                VALUES ('$name', '$noofpeople', '$dot', '$phone', '$country', '$message', '$current_datetime')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<p>Registration successful!</p>";
+        } else {
+            echo "<p>Error inserting data: " . mysqli_error($conn) . "</p>";
+        }
+
+        mysqli_close($conn);
     }
-
-    $name = mysqli_real_escape_string($conn, $name);
-    $noofpeople = mysqli_real_escape_string($conn, $noofpeople);
-    $dot = mysqli_real_escape_string($conn, $dot);
-    $phone = mysqli_real_escape_string($conn, $phone);
-    $country = mysqli_real_escape_string($conn, $country);
-    $message = mysqli_real_escape_string($conn, $message);
-
-    $current_datetime = date("Y-m-d H:i:s");
-
-    $sql = "INSERT INTO `book_table` (`name`, `noofpeople`, `dot`, `phone`, `country`,`message`,`datetime`) 
-    VALUES ('$name', '$noofpeople', '$dot', '$phone','$country','$message', '$current_datetime')";
-
-    if (mysqli_query($conn, $sql)) {
-        echo "<p>Registration successful!</p>";
-    } else {
-        echo "<p>Error inserting data: " . mysqli_error($conn) . "</p>";
-    }
-
-    // Close the database connection
-    mysqli_close($conn);
-
-    }
-
-
-   ?>
+    ?>
 
     <div class="header">
         <img src="images/logo.png" alt="Logo">
@@ -72,7 +67,7 @@
             <h2>Book Your Trip</h2>
             <form action="#" method="post" name="form">
                 <label for="name">Full Name</label>
-                <input type="text" id="name"  name ="name" placeholder="Your name" required>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
 
                 <label for="people">No. of People</label>
                 <input type="number" name="noofpeople" id="people" placeholder="Total people" required>
@@ -100,7 +95,7 @@
                 </select>
 
                 <label for="message">More Information</label>
-                <textarea id="message"  name="message" rows="4" placeholder="Additional details..."></textarea>
+                <textarea id="message" name="message" rows="4" placeholder="Additional details..."></textarea>
 
                 <button type="submit" class="register">Book Now</button>
             </form>
@@ -112,8 +107,6 @@
         <p><i class="fa-brands fa-instagram"></i> Yatru_Official</p>
         <p><i class="fa-brands fa-square-facebook"></i> Yatra Tours&Hotels</p>
         <p><i class="fa-solid fa-phone"></i> +977-957689547</p>
-                
-    </div>
     </div>
 </body>
 

@@ -87,11 +87,12 @@
 
         <div class="foot ">
             <div class="option">
-                <a href="package.html" style="color: aliceblue;"> 
+                
+            <a href="package.php"> 
                 <img src="images/tour.png" id="tourlogo">
-            </a>
-            <a href="hotel.html">
                 <p id="paratour">Packages</p>
+            </a>
+            <a href="hotel.php">
                 <img src="images/hotel.png" id="hotellogo">
                 <p id="parahotel">Hotels</p>
             </a>
@@ -103,7 +104,7 @@
                 </button>
             </a> -->
             <div class="sign">
-                <a href="signup.html">
+                <a href="sign_up.php">
                     <button id="bookhere">
                         SIGN-UP NOW <i class="fa-solid fa-circle-arrow-right"></i>
                     </button>
