@@ -27,7 +27,7 @@
         $servername = "localhost";
         $username = "root";
         $db_password = ""; // Database password
-        $database = "cwhdb"; // Replace with your actual database name
+        $database = "cwhdb"; 
 
         $conn = mysqli_connect($servername, $username, $db_password, $database);
 

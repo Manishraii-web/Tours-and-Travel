@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_package'])) {
         $package_type = $_POST['package_type']; 
 
         // Image upload handling
-        $target_dir = "uploads/"; 
+        $target_dir ="uploads/";
         $original_filename = basename($_FILES["image"]["name"]); 
         $unique_filename = uniqid() . "_" . $original_filename; // Using uniqid() for better uniqueness
         $target_file = $target_dir . $unique_filename;

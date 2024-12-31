@@ -53,12 +53,8 @@ if ($conn->connect_error) {
                 <?php while ($row = $result_top->fetch_assoc()) : ?>
                     <div class="image-container">
                         <a href="book.php?package_name=<?php echo urlencode($row['name']); ?>"> 
-                            <?php if (file_exists($row['image_url'])) : ?>
-                                <img src="<?php echo $row['image_url']; ?>" alt="<?php echo htmlspecialchars($row['name']); ?>" 
+                            <img src="uploads<?php echo $row['image_url']; ?>" alt="<?php echo htmlspecialchars($row['name']); ?>" 
                                 onerror="this.src='images/no-image.jpg'"> 
-                            <?php else : ?>
-                                <p>Image not found.</p>
-                            <?php endif; ?>
                             <p><?php echo htmlspecialchars($row['name']); ?></p>
                             <p class="price">Price: Rs <?php echo number_format($row['price'], 2); ?></p> 
                         </a>
@@ -82,12 +78,8 @@ if ($conn->connect_error) {
                 <?php while ($row = $result_other->fetch_assoc()) : ?>
                     <div class="image-container">
                         <a href="book.php?package_name=<?php echo urlencode($row['name']); ?>"> 
-                            <?php if (file_exists($row['image_url'])) : ?>
-                                <img src="<?php echo $row['image_url']; ?>" alt="<?php echo htmlspecialchars($row['name']); ?>" 
+                            <img src="admin/uploads/<?php echo $row['image_url']; ?>" alt="<?php echo htmlspecialchars($row['name']); ?>" 
                                 onerror="this.src='images/no-image.jpg'"> 
-                            <?php else : ?>
-                                <p>Image not found.</p>
-                            <?php endif; ?>
                             <p><?php echo htmlspecialchars($row['name']); ?></p>
                             <p class="price">Price: Rs <?php echo number_format($row['price'], 2); ?></p> 
                         </a>
@@ -110,3 +102,4 @@ if ($conn->connect_error) {
 </body>
 
 </html>
+
