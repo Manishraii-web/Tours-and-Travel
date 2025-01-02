@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = ""; // Your database password
-$database = "cwhdb"; // Replace with your actual database name
+$database = "tourism"; // Replace with your actual database name
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -19,7 +19,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 
 // Fetch booking details
-$sql = "SELECT * FROM book_table WHERE id = $booking_id";
+$sql = "SELECT * FROM bookings WHERE id = $booking_id";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) == 1) {
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $country = $_POST['country'];
     $message = $_POST['message'];
 
-    $update_sql = "UPDATE book_table SET 
+    $update_sql = "UPDATE bookings SET 
                     name = '$name', 
                     noofpeople = '$noofpeople', 
                     dot = '$dot', 
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     WHERE id = $booking_id";
 
     if (mysqli_query($conn, $update_sql)) {
-        header("Location: manage_booking.php");
+        header("Location: bookings.php");
         exit();
     } else {
         echo "Error updating booking: " . mysqli_error($conn);

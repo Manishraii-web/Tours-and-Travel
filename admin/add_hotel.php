@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
     }
 
     // Check file size (adjust as needed)
-    $maxSize = 500000; // 500KB
+    $maxSize = 50000000; // 500KB
     if ($_FILES["hotel_image"]["size"] > $maxSize) {
         echo "Sorry, your file is too large. Maximum size: " . ($maxSize / 1024) . "KB";
         $uploadOk = 0;
@@ -87,10 +87,104 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Hotel</title>
+    <link rel="stylesheet" href="addhotel.css">
+    <style>
+        body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0; }
+       form{
+        border:20px solid blue;
+        padding:10px;
+        width:400px;
+        margin:auto;
+        margin-top:100px;
+
+       }
+
+       .header {
+    display: flex;
+    background-color: #34549b;
+    align-items: center;
+    max-width: 100%;
+    justify-content: space-between;
+    height: 40px;
+    position: sticky;
+    top: 0;
+
+
+}
+
+.header img {
+    margin-top: 2 px;
+    height: 35px;
+}
+
+.header p {
+    color: white;
+    position: absolute;
+    left: 4%;
+    top: 1;
+    display: flex;
+    font-size: 14px;
+}
+
+nav ul {
+    display: flex;
+    gap: 50px;
+    overflow: auto;
+    text-decoration: none;
+    list-style: none;
+
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: rgb(139, 15, 106);
+    transform: scale(1.05);
+}
+
+#search {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    border-radius: 8px;
+    height: 40px;
+    width: 400px;
+    /* box-shadow: 5px 9px 10px 10px rgb(10, 134, 175); */
+}
+form>h1{
+    text-aligns:center;
+}
+
+    </style>
 </head>
 <body>
-    <h1>Add New Hotel</h1>
+
+    <div class="container">
+    <div class="header">
+    <img src="images/logo.png" id="logo">
+    <p id="para1">Yatra tours & <br>travels</p>
+    <nav>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="aboutus.php">About Us</a></li>
+            <li><a href="contactus.php">Contact</a></li>
+            <li><a href="package.php">Packages</a></li>
+            <li><a href="hotel.php">Hotels</a></li>
+        </ul>
+    </nav>
+</div>
+
+
     <form method="POST" action="add_hotel.php" enctype="multipart/form-data">
+    <h1>Add New Hotel</h1>
         <label for="hotel_name">Hotel Name:</label>
         <input type="text" id="hotel_name" name="hotel_name" required><br><br>
 
@@ -105,5 +199,6 @@ $conn->close();
 
         <button type="submit" name="submit">Add Hotel</button>
     </form>
+</div>
 </body>
 </html>

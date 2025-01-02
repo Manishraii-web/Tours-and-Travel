@@ -32,10 +32,10 @@ if ($conn->connect_error) {
             <p id="para1">Yatra tours & <br>travels</p>
             <nav>
                 <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="package.html">Packages</a></li> 
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
+                    <li><a href="contactus.php">Contact</a></li>
+                    <li><a href="package.php">Packages</a></li> 
                 </ul>
             </nav>
         </div>

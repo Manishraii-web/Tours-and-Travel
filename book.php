@@ -27,7 +27,7 @@
         $servername = "localhost";
         $username = "root";
         $db_password = ""; // Database password
-        $database = "cwhdb"; 
+        $database = "tourism"; 
 
         $conn = mysqli_connect($servername, $username, $db_password, $database);
 
@@ -44,7 +44,7 @@
 
         $current_datetime = date("Y-m-d H:i:s");
 
-        $sql = "INSERT INTO `book_table` (`name`, `noofpeople`, `dot`, `phone`, `country`, `message`, `datetime`) 
+        $sql = "INSERT INTO `bookings` (`name`, `noofpeople`, `dot`, `phone`, `country`, `message`, `datetime`) 
                 VALUES ('$name', '$noofpeople', '$dot', '$phone', '$country', '$message', '$current_datetime')";
 
         if (mysqli_query($conn, $sql)) {

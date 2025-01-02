@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = ""; // Your database password
-$database = "cwhdb"; // Replace with your actual database name
+$database = "tourism"; // Replace with your actual database name
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -16,13 +16,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $booking_id = intval($_GET['id']); // Convert to integer for safety
 
     // Prepare the DELETE query
-    $stmt = $conn->prepare("DELETE FROM book_table WHERE id = ?");
+    $stmt = $conn->prepare("DELETE FROM bookings WHERE id = ?");
     $stmt->bind_param("i", $booking_id); // Bind the parameter as an integer
 
     // Execute the query and check the result
     if ($stmt->execute()) {
         // Redirect to manage_booking.php on success
-        header("Location: manage_booking.php?message=Booking deleted successfully");
+        header("Location: bookings.php?message=Booking deleted successfully");
         exit();
     } else {
         echo "Error deleting booking: " . $stmt->error;

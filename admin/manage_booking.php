@@ -1,22 +1,22 @@
-manage_booking.php :<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour Booking Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="dashboard.css"> 
 </head>
 <body>
     <div class="dashboard-container">
         <header>
-            <h1>Admin Dashboard</h1>
+            <h1>Manage Booking</h1>
         </header>
 
         <div class="stats">
             </div>
 
         <section class="manage-bookings">
-            <h2>Manage Bookings</h2>
+            <!-- <h2>Manage Bookings</h2> -->
             <table>
                 <thead>
                     <tr>
@@ -27,6 +27,7 @@ manage_booking.php :<!DOCTYPE html>
                         <th>Phone Number</th>
                         <th>Country</th>
                         <th>Message</th>
+                        <th>Actions</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -34,41 +35,42 @@ manage_booking.php :<!DOCTYPE html>
                     // Database Connection
                     $servername = "localhost";
                     $username = "root";
-                    $db_password = ""; // Your database password
-                    $database = "cwhdb"; // Replace with your actual database name
+                    $password = ""; // Your database password
+                    $database = "tourism"; // Replace with your actual database name
 
-                    $conn = mysqli_connect($servername, $username, $db_password, $database);
+                    $conn = new mysqli($servername, $username, $password, $database);
 
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
                     }
 
                     // Fetch bookings from the database
-                    $sql = "SELECT * FROM book_table"; // Replace with your actual booking table name
-                    $result = mysqli_query($conn, $sql);
+                    $sql = "SELECT * FROM bookings"; 
+                    $result = $conn->query($sql);
 
-                    if (!$result) {
-                        die("Error fetching bookings: " . mysqli_error($conn));
-                    }
-
-                    $serial_number = 1;
-                    if (mysqli_num_rows($result) > 0) { 
-                        while ($booking = mysqli_fetch_assoc($result)) { ?>
+                    if ($result->num_rows > 0) {
+                        $serial_number = 1;
+                        while($row = $result->fetch_assoc()) { ?>
                             <tr>
-                                <td><?= $serial_number++ ?></td>
-                                <td><?= htmlspecialchars($booking['name'] ?? '') ?></td>
-                                <td><?= htmlspecialchars($booking['noofpeople'] ?? '') ?></td>
-                                <td><?= htmlspecialchars($booking['dot'] ?? '') ?></td>
-                                <td><?= htmlspecialchars($booking['phone'] ?? '') ?></td>
-                                <td><?= htmlspecialchars($booking['country'] ?? '') ?></td>
-                                <td><?= htmlspecialchars($booking['message'] ?? '') ?></td>
+                                <td><?php echo $serial_number++; ?></td>
+                                <td><?php echo htmlspecialchars($row["name"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["noofpeople"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["dot"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["phone"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["country"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["message"]); ?></td>
+                                <td>
+                                    <a href="edit_booking.php?id=<?php echo urlencode($row["id"]); ?>">Edit</a> | 
+                                    <a href="delete_booking.php?id=<?php echo urlencode($row["id"]); ?>" onclick="return confirm('Are you sure you want to delete this booking?')">Delete</a>
+                                </td>
                             </tr>
                         <?php }
                     } else { ?>
-                        <tr><td colspan="7">No bookings found.</td></tr>
+                        <tr><td colspan="8">No bookings found.</td></tr>
                     <?php }
 
-                    mysqli_close($conn);
+                    $conn->close();
                     ?>
                 </tbody>
             </table>

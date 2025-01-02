@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #34549b ;
+    color: #ecf0f1;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #34495e;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    background-color: #fff;
+    flex: 1;
+}
+
+h1, h2, h3 {
+    color: #2A2A2A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #2980b9;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Stats Section Styling */
+.stats {
+    margin-top: 30px;
+}
+
+.stats p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.stats table {
+    margin-top: 20px;
+}
+
+/* Hover Effect on Table Rows */
+tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #e1e1e1;
+    transform: scale(1.02);
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    .sidebar ul {
+        display: flex;
+        justify-content: space-around;
+        font-size: 10px;
+        padding: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .stats p {
+        font-size: 16px;
+    }
+
+    /* Making Table Row Display Mobile-Friendly */
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        text-align: left;
+        font-weight: bold;
+    }
+}
+/* Container for the circles */
+.circle-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Style for each circle */
+.circle {
+    width: 120px;
+    height: 120px;
+    background-color: #2980b9;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for count number */
+.count {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Different background colors for each circle */
+.circle:nth-child(1) {
+    background-color: skyblue; 
+}
+
+.circle:nth-child(2) {
+    background-color: yellowgreen; 
+}
+
+.circle:nth-child(3) {
+    background-color: lightcoral; 
+}
+
+/* Mobile styling */
+@media (max-width: 768px) {
+    .circle-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .circle {
+        margin-bottom: 20px;
+    }
+}

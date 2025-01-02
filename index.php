@@ -22,7 +22,7 @@
                     <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="contactus.php">Contact</a></li>
                     <li><a href="package.php">Packages</a></li>
-                    <!-- <li><a href="destination">Destination</a></li> -->
+                    <li><a href="hotel.php">Hotels</a></li>
                 </ul>
             </nav>
         </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="image-container">
                 <a href="package.php">
-                <img src="images/newbg1.jpg" alt="Mt. Everest">
+                <img src="images/mounteverest.jpg" alt="Mt. Everest">
                 <p>Mount Everest</p>
                 <p class="price">Price: Rs 700000</p> </a>
             </div>

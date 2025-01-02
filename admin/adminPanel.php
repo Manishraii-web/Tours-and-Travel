@@ -26,7 +26,8 @@ if (!isset($_SESSION['AdminLoginId'])) {
             <li><a href="add_package.php">Manage Packages</a></li>
             <li><a href="manage_users.php">Manage Users</a></li>
             <li><a href="manage_booking.php">View Bookings</a></li>
-            <li><a href="reports.php">Reports</a></li>
+            <li><a href="manage_hotel.php">Manage Hotels</a></li>
+            <li><a href="report.php">Reports</a></li>
         </ul>
         <!-- Logout Button -->
         <form method="POST">
@@ -55,6 +56,11 @@ if (!isset($_SESSION['AdminLoginId'])) {
                 <p>View Recent Bookings</p>
                 <a href="manage_booking.php" class="btn">View Bookings</a>
             </div>
+            <div class="card">
+                  <h3>Hotels</h3>
+                   <p>View Recent Bookings</p>
+                       <a href="add_hotel.php" class="btn">View Hotels</a>
+                           </div>
         </div>
     </div>
 
