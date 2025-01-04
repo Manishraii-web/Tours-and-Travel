@@ -30,6 +30,7 @@ if (mysqli_num_rows($result) == 1) {
 }
 
 // Handle form submission to update booking
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $noofpeople = $_POST['noofpeople'];
@@ -48,8 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     WHERE id = $booking_id";
 
     if (mysqli_query($conn, $update_sql)) {
-        header("Location: bookings.php");
-        exit();
+        // Display success message
+        echo "<p>Data updated successfully.</p>"; 
+        // Optionally, redirect after a short delay
+        header("Refresh: 2; URL=manage_booking.php"); 
     } else {
         echo "Error updating booking: " . mysqli_error($conn);
     }
@@ -66,7 +69,9 @@ mysqli_close($conn);
     <title>Edit Booking</title>
     <link rel="stylesheet" href="edit_booking.css"> 
 </head>
-<body>
+<body> 
+    <div class= "container">
+        <div class="header"></div>
     <h2>Edit Booking</h2>
 
     <form action="" method="POST">
@@ -90,6 +95,7 @@ mysqli_close($conn);
 
         <button type="submit">Update Booking</button>
     </form>
+    </div>
 
 </body>
 </html>

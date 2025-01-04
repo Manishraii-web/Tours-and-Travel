@@ -89,16 +89,17 @@ $conn->close();
     <title>Add Hotel</title>
     <link rel="stylesheet" href="addhotel.css">
     <style>
-        body {
+ body {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0; }
        form{
-        border:20px solid blue;
+        border:3px solid blue;
         padding:10px;
         width:400px;
         margin:auto;
         margin-top:100px;
+        border-radius:10px;
 
        }
 
@@ -118,6 +119,7 @@ $conn->close();
 .header img {
     margin-top: 2 px;
     height: 35px;
+    mix-blend-mode:auto;
 }
 
 .header p {
@@ -159,8 +161,18 @@ nav ul li a:hover {
     width: 400px;
     /* box-shadow: 5px 9px 10px 10px rgb(10, 134, 175); */
 }
-form>h1{
+form h1{
     text-aligns:center;
+    margin-bottom:46px;
+}
+button{
+    background-color:darkblue;
+    color:white;
+    padding:6px;
+    border-radius:10px;
+}
+button:hover{
+    background-color:blue;
 }
 
     </style>
@@ -169,7 +181,7 @@ form>h1{
 
     <div class="container">
     <div class="header">
-    <img src="images/logo.png" id="logo">
+    <img src="../images/logo.png" id="logo">
     <p id="para1">Yatra tours & <br>travels</p>
     <nav>
         <ul>

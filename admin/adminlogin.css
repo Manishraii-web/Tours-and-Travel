@@ -51,13 +51,13 @@ body {
 .btn {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #34549b;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 18px;
 }
 
 .btn:hover {

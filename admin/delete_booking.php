@@ -22,7 +22,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     // Execute the query and check the result
     if ($stmt->execute()) {
         // Redirect to manage_booking.php on success
-        header("Location: bookings.php?message=Booking deleted successfully");
+        header("Location: manage_booking.php?message=Booking deleted successfully");
         exit();
     } else {
         echo "Error deleting booking: " . $stmt->error;

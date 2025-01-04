@@ -1,0 +1,63 @@
+body {
+    font-family: sans-serif; /* Choose a suitable font */
+    margin: auto;
+    display: flex; /* Center the form horizontally */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the body take up full viewport heihht*/
+    background-color: skyblue;
+  }
+  
+  .container {
+    background-color:white;/* White container background */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 300px; /* Adjust width as needed */
+  }
+  
+  .header {
+    background-color: darkblue; /* Darker header background */
+    color:white;
+    text-align: center;
+    padding: 15px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  form {
+    display: grid; /* Use grid layout for better control */
+    grid-template-columns: 1fr; /* One column */
+    grid-gap: 1px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color:darkblue;
+    color: white;
+    border: none;
+    padding: 10px 1px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: blue;
+  }
