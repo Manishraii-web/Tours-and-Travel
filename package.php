@@ -27,18 +27,9 @@ if ($conn->connect_error) {
 
 <body>
     <div class="container">
-        <div class="header">
-            <img src="images/logo.png" id="logo">
-            <p id="para1">Yatra tours & <br>travels</p>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="contactus.php">Contact</a></li>
-                    <li><a href="package.php">Packages</a></li> 
-                </ul>
-            </nav>
-        </div>
+        <?php
+        include"header.php"
+        ?>
 
         <div class="section-header">
             <h1>TOP PACKAGES</h1>
@@ -89,17 +80,10 @@ if ($conn->connect_error) {
                 <p>No other packages available.</p>
             <?php endif; ?>
         </div>
-
-        <div class="foot ">
-            <div class="contact-info">
-                <p> <i class="fa-solid fa-envelope"></i> yatru@gmail.com</p>
-                <p><i class="fa-brands fa-instagram"></i> Yatru_Official</p>
-                <p><i class="fa-brands fa-square-facebook"></i> Yatra Tours&Hotels</p>
-                <p><i class="fa-solid fa-phone"></i> +977-957689547</p>
-            </div>
-        </div>
+          <?php
+          include"footer.php"
+          ?>
     </div>
 </body>
 
 </html>
-

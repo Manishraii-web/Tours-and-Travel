@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_package'])) {
         }
 
         // Check file size (adjust as needed)
-        $maxSize = 500000; // 500KB
+        $maxSize = 5000000; // 500KB
         if ($_FILES["image"]["size"] > $maxSize) {
             echo "Sorry, your file is too large. Maximum size: " . ($maxSize / 1024) . "KB";
             $uploadOk = 0;
@@ -108,11 +108,10 @@ $conn->close();
 </head>
 <body>
     <div class="container">
-     <div class="header">
-     <img src="uploads/logo.png" id="logo">
-     <p id="para1">Yatra tours & <br>travels</p>
- 
-  </div>
+        <div class="header">
+            <img src="uploads/logo.png" id="logo">
+            <p id="para1">Yatra tours & <br>travels</p>
+        </div>
         <h1>Add New Package</h1>
 
         <form action="add_package.php" method="POST" enctype="multipart/form-data"> 

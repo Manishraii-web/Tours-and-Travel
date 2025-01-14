@@ -1,78 +1,80 @@
 <?php
-session_start(); 
+// Session start and authentication check if needed
+// session_start(); 
+// if (!isset($_SESSION['AdminLoginId'])) {
+//     header("Location: adminlogin.php"); 
+//     exit();
+// }
 
-// If the admin is not logged in, redirect to the login page
-if (!isset($_SESSION['AdminLoginId'])) {
-    header("Location: adminlogin.php"); // Redirect to the admin login page
-    exit();
+$selectedPage = 'dashboard'; // Default page
+
+if (isset($_GET['page'])) {
+    $selectedPage = $_GET['page']; // Set the selected page based on the query parameter
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yatra's Dashboard</title>
-    <link rel="stylesheet"  href="adminPanel.css">
+    <link rel="stylesheet" href="adminPanel.css">
 </head>
 <body>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2> Yatra's<br> Dashboard</h2>
+        <h2>Dashboard</h2>
         <ul>
-            <!-- <li><a href="#">Dashboard</a></li> -->
-            <li><a href="add_package.php">Manage Packages</a></li>
-            <li><a href="manage_users.php">Manage Users</a></li>
-            <li><a href="manage_booking.php">View Bookings</a></li>
-            <li><a href="manage_hotel.php">Manage Hotels</a></li>
-            <li><a href="report.php">Reports</a></li>
+            <!-- Sidebar Links with PHP embedded, passing page parameters -->
+            <li><a href="?page=add_package">Manage Packages</a></li>
+            <li><a href="?page=manage_users">Manage Users</a></li>
+            <li><a href="?page=manage_booking">View Bookings</a></li>
+            <li><a href="?page=manage_hotel">Manage Hotels</a></li>
+            <li><a href="?page=report">Reports</a></li>
         </ul>
+
         <!-- Logout Button -->
         <form method="POST">
             <button type="submit" name="logout" class="btn">Logout</button>
         </form>
     </div>
 
-   
     <div class="content">
         <h2>Greeting, Master</h2>
 
-        <!-- Dashboard Cards -->
-        <div class="card-container">
-            <div class="card">
-                <h3>Package Available</h3>
-                <p>View, Add, or Edit Cars</p>
-                <a href="add_package.php" class="btn">Manage Packages</a>
-            </div>
-            <div class="card">
-                <h3>Registered Users</h3>
-                <p>View, Add, or Edit Users</p>
-                <a href="manage_users.php" class="btn">Manage Users</a>
-            </div>
-            <div class="card">
-                <h3>Bookings</h3>
-                <p>View Recent Bookings</p>
-                <a href="manage_booking.php" class="btn">View Bookings</a>
-            </div>
-            <div class="card">
-                  <h3>Hotels</h3>
-                   <p>View Recent Bookings</p>
-                       <a href="add_hotel.php" class="btn">View Hotels</a>
-                           </div>
+        <!-- Content Section - Dynamically Loaded Based on Selection -->
+        <div class="dynamic-content">
+            <?php
+            // Include the corresponding content based on the selected page
+            if ($selectedPage == 'add_package') {
+                include('add_package.php');
+            } elseif ($selectedPage == 'manage_users') {
+                include('manage_user.php');
+            } elseif ($selectedPage == 'manage_booking') {
+                include('manage_booking.php');
+            } elseif ($selectedPage == 'manage_hotel') {
+                include('add_hotel.php');
+            } elseif ($selectedPage == 'report') {
+                include('report.php');
+            } else {
+                echo "<h3>Welcome to the Dashboard</h3>";
+                echo "<p>Select a link to manage the content.</p>";
+            }
+            ?>
         </div>
     </div>
 
-    <?php 
-// PHP Logout
-if (isset($_POST["logout"])) {
-    session_start();
-    session_destroy();
-    header("Location: ../index.php");
-    exit();
-}
-?>
+    <?php
+    // PHP Logout
+    if (isset($_POST["logout"])) {
+        session_start();
+        session_destroy();
+        header("Location: ../index.php");
+        exit();
+    }
+    ?>
 
 </body>
 </html>

@@ -14,7 +14,7 @@ body {
 
 .sidebar {
     width: 250px;
-    background-color: #34549b ;
+    background-color:rgba(247, 111, 47, 0.5); ;
     color: #ecf0f1;
     padding: 20px;
     position: fixed;
