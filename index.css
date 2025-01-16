@@ -143,16 +143,31 @@ body {
     display: inline-block;
 }
 
+.sign, .login {
+    position: absolute;
+    top: 20px;  /* Adjust the distance from the top */
+    right: 20px; /* Position at the right side */
+}
+
+.login {
+    top: 70px; /* Adjust to place login below sign-up */
+}
 
 #bookhere {
     color: rgb(5, 5, 142);
     font-weight: bold;
     height: 40px;
-    margin-top: 30px;
     border-radius: 200px;
     width: 150px;
     background-color: rgba(255, 0, 0, 0.889);
+    border: none;
+    cursor: pointer;
 }
+
+#bookhere:hover {
+    background-color: rgba(200, 0, 0, 0.9);
+}
+
 
 .contact-info p {
     margin: 5px 0;

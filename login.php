@@ -97,6 +97,9 @@ mysqli_close($conn);
 </head>
 <body>
     <div class="container">
+        <?php
+        include"header.php"
+        ?>
         <h1>Login</h1>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div>
@@ -116,3 +119,6 @@ mysqli_close($conn);
     </div>
 </body>
 </html>
+<?php
+include"footer.php"
+?>

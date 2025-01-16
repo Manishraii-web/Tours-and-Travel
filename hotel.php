@@ -37,6 +37,7 @@ $result = $conn->query($sql);
             text-align: center;
             color: #333;
             margin-bottom: 30px;
+            margin-top:40px;
         }
 
         /* Hotel List */
@@ -54,6 +55,7 @@ $result = $conn->query($sql);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s ease;
+            margin-bottom:60px;
         }
 
         .hotel-card:hover {
@@ -117,7 +119,7 @@ $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {
                     // Display each hotel as a card
                     echo '<div class="hotel-card">';
-                    echo '<img src="admin/  uploads/' . $row['image_path'] . '" alt="Hotel Image" class="hotel-image">';
+                    echo '<img src="admin/uploads/' . $row['image_path'] . '" alt="Hotel Image" class="hotel-image">';
                     echo '<div class="hotel-info">';
                     echo '<h2>' . $row['hotel_name'] . '</h2>';
                     echo '<p>Location: ' . $row['location'] . '</p>';

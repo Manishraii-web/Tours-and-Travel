@@ -58,56 +58,10 @@ $conn->close();
 </head>
 <body>
 
-<div class="sidebar">
-    <a href="adminPanel.php">
-        <h2 style="color:white;">Dashboard</h2>
-    </a>
-    <ul>
-         <li><a href="add_package.php">Manage Packages</a></li>
-         <li><a href="manage_users.php">Manage Users</a></li>
-         <li><a href="manage_booking.php">View Bookings</a></li>
-         <li><a href="report.php">Reports</a></li>
-    </ul>
-</div>
-
 <div class="main-content">
     <h2>Reports</h2>
 
     <!-- User Activity Report -->
-    <div class="stats">
-        <h3>User Activity Report</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>User Email</th>
-                    <th>Activity</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="User Email">user1@example.com</td>
-                    <td data-label="Activity">Booked a Hotel</td>
-                    <td data-label="Date">2024-10-20</td>
-                </tr>
-                <tr>
-                    <td data-label="User Email">user2@example.com</td>
-                    <td data-label="Activity">Cancelled booking</td>
-                    <td data-label="Date">2024-10-21</td>
-                </tr>
-                <tr>
-                    <td data-label="User Email">user3@example.com</td>
-                    <td data-label="Activity">Updated package</td>
-                    <td data-label="Date">2024-10-22</td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="no-data" data-label="No more activity found">No more activity found.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    
     <div class="stats" style="font-weight: bold; color: black">
         <h3>Yatra's Tours and Travels Statistics</h3>
         <div class="circle-stats">

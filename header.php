@@ -89,7 +89,7 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="aboutus.php">About Us</a></li>
                 <li><a href="contactus.php">Contact</a></li>
-                <li><a href="package.php">Packages</a></li>
+                <li><a href="admin/package.php">Packages</a></li>
                 <li><a href="hotel.php">Hotels</a></li>
             </ul>
         </nav>

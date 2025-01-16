@@ -67,10 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="container">
-        <div class="head">
-            <img src="images/logo.png" id="logo">
-            <p id="para1">Yatra tours & travels</p>
-        </div>
+        <?php
+        include"header.php"
+        ?>
         <div class="top">
             <h1>SIGNUP</h1>
             <?php if (!empty($errors)) { ?>
@@ -96,7 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
             <p>Already have an Account? <a href="login.php">Login here</a></p>
         </div>
-        <div class="footer"></div>
     </div>
 </body>
 </html>
+<?php
+include"footer.php"
+?>

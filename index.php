@@ -21,6 +21,12 @@ include"header.php"
             SIGN-UP NOW <i class="fa-solid fa-circle-arrow-right"></i>
         </button>
     </a>
+    </div>
+    <div class="login">
+    <a href="login.php">
+     <button id="bookhere">
+        LOGIN <i class="fa-solid fa-circle-arrow-right"></i> </button>
+    </a>
 </div>
         <div class="hero">
             <h1>Dream Larger<br> Travel Smarter</h1>

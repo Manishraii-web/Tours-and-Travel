@@ -1,8 +1,9 @@
 <?php
-$host = 'localhost'; 
-$db = 'tourism'; 
-$user = 'root'; 
-$pass = ''; 
+// Database connection
+$host = 'localhost'; // Change to your host
+$db = 'tourism'; // Change to your database name
+$user = 'root'; // Change to your database username
+$pass = ''; // Change to your database password
 $conn = new mysqli($host, $user, $pass, $db);
 
 if ($conn->connect_error) {
@@ -65,7 +66,7 @@ if (isset($_POST['submit'])) {
     $stmt->bind_param("sssss", $package_name, $description, $package_type, $price, $target_file);
     
     if ($stmt->execute()) {
-        echo "<script>alert('Your package has been added successfully!'); window.location.href='adminPanel.php';</script>";
+        echo "<script>alert('Your package has been added successfully!'); window.location.href='try_admin.php';</script>";
     } else {
         die("Error inserting data: " . $stmt->error);
     }
@@ -81,92 +82,6 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Package</title>
-    <!-- <link rel="stylesheet" href="add_package.css"> -->
-     <style>
-        body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
-}
-
-form {
-    width: 50%;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-}
-
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.add {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    font-size: 16px;
-    margin-top: 15px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.add:hover {
-    background-color: #218838;
-}
-
-/* Table Styling */
-table {
-    width: 80%;
-    margin: 30px auto;
-    border-collapse: collapse;
-    background: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: center;
-}
-
-th {
-    background-color: #28a745;
-    color: white;
-}
-
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-    padding: 8px 12px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.delete-btn:hover {
-    background-color: #c82333;
-}
-</style>
 </head>
 <body>
     <h1>Add Tourism Package</h1>
@@ -189,54 +104,7 @@ th {
         <label for="photo">Photo:</label>
         <input type="file" name="photo" accept="image/*" required><br>
 
-        <button type="submit" name="submit" class="add">Add Package</button>
+        <button type="submit" name="submit">Add Package</button>
     </form>
-    <?php
-// Place this code before the closing </body> tag
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT * FROM tourism_packages ORDER BY id DESC";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    echo '<table>
-            <thead>
-                <tr>
-                    <th>Package Name</th>
-                    <th>Description</th>
-                    <th>Package Type</th>
-                    <th>Price</th>
-                    <th>Photo</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>';
-    
-    while ($row = $result->fetch_assoc()) {
-        echo '<tr>
-                <td>' . htmlspecialchars($row['package_name']) . '</td>
-                <td>' . htmlspecialchars($row['description']) . '</td>
-                <td>' . htmlspecialchars($row['package_type']) . '</td>
-                <td>$' . number_format($row['price'], 2) . '</td>
-                <td><img src="' . htmlspecialchars($row['photo_url']) . '" width="100"></td>
-                <td>
-                    <a href="delete_packages.php?id=' . $row['id'] . '" class="delete-btn" 
-                       onclick="return confirm(\'Are you sure you want to delete this package?\')">Delete</a>
-                </td>
-            </tr>';
-    }
-    
-    echo '</tbody></table>';
-} else {
-    echo '<p style="text-align: center; margin: 20px;">No packages found</p>';
-}
-
-$conn->close();
-?>
 </body>
 </html>
