@@ -143,12 +143,16 @@ body {
     display: inline-block;
 }
 
-.sign, .login {
+.sign {
     position: absolute;
-    top: 20px;  /* Adjust the distance from the top */
-    right: 20px; /* Position at the right side */
+    margin-top: 100px; 
+    margin-left:550px;
+ /* Adjust the distance from the top */
+    /* right: 20px;  */
 }
-
+.sign button {
+    position:relative;
+}
 .login {
     top: 70px; /* Adjust to place login below sign-up */
 }

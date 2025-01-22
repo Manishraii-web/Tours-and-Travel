@@ -1,5 +1,8 @@
 <?php
-include "header.php";
+include "header.php"
+?>
+
+<?php
 
 // Database connection
 $servername = "localhost";
@@ -136,7 +139,7 @@ $result = $conn->query($sql);
     </div>
 
 <?php
-include 'footer.php';
+include"footer.php"
 ?>
 </body>
 </html>

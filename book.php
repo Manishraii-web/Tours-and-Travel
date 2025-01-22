@@ -87,6 +87,7 @@ include"header.php"
                     <option value="UK">United Kingdom</option>
                     <option value="Nepal">Nepal</option>
                     <option value="India">India</option>
+                    <option value="others">Other</option>
                 </select>
 
                 <label for="message">More Information</label>
@@ -96,13 +97,10 @@ include"header.php"
             </form>
         </div>
     </div>
-
-    <div class="contact-info">
-        <p> <i class="fa-solid fa-envelope"></i> yatru@gmail.com</p>
-        <p><i class="fa-brands fa-instagram"></i> Yatru_Official</p>
-        <p><i class="fa-brands fa-square-facebook"></i> Yatra Tours&Hotels</p>
-        <p><i class="fa-solid fa-phone"></i> +977-957689547</p>
     </div>
+    <?php
+include"footer.php"
+?>
 </body>
 
 </html>

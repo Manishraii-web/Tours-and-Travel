@@ -19,27 +19,17 @@ if (isset($_GET['page'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yatra's Dashboard</title>
-    <link rel="stylesheet" href="adminPanel.css">
+    <!-- <link rel="stylesheet" href="adminPanel.css"> -->
+     
 </head>
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar">
-        <h2>Dashboard</h2>
-        <ul>
-            <!-- Sidebar Links with PHP embedded, passing page parameters -->
-            <li><a href="?page=add_package">Manage Packages</a></li>
-            <li><a href="?page=manage_users">Manage Users</a></li>
-            <li><a href="?page=manage_booking">View Bookings</a></li>
-            <li><a href="?page=manage_hotel">Manage Hotels</a></li>
-            <li><a href="?page=report">Reports</a></li>
-        </ul>
-
-        <!-- Logout Button -->
-        <form method="POST">
-            <button type="submit" name="logout" class="btn">Logout</button>
-        </form>
-    </div>
+     <?php
+     include"sidebar.php"
+     ?>
+             
+   
 
     <div class="content">
         <h2>Greeting, Master</h2>

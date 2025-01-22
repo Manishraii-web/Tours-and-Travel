@@ -1,4 +1,17 @@
-* {
+<div class="sidebar">
+    <h2>Dashboard</h2>
+    <ul>
+        <!-- Sidebar Links with PHP embedded, passing page parameters -->
+        <li><a href="?page=add_package">Manage Packages</a></li>
+        <li><a href="?page=manage_users">Manage Users</a></li>
+        <li><a href="?page=manage_booking">View Bookings</a></li>
+        <li><a href="?page=manage_hotel">Manage Hotels</a></li>
+        <li><a href="?page=report">Reports</a></li>
+    </ul>
+    <!-- Logout Button -->
+        <button type="submit" name="logout" class="btn">Logout</button>
+</div>
+<style> * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -165,3 +178,4 @@ body {
        
     }
 }
+</style>

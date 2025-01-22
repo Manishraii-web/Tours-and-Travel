@@ -1,3 +1,32 @@
+<?php
+// session_start();
+include "connection.php"; // Include database connection
+
+$firstname = "Guest"; // Default name if no user is logged in
+
+// Check if user is logged in
+if (isset($_SESSION["user_id"])) {
+    // Fetch user details from the database
+    $user_id = $_SESSION["user_id"];
+    $sql = "SELECT firstname FROM users WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $firstname);
+        
+        if (!mysqli_stmt_fetch($stmt)) {
+            $firstname = "Guest"; // If fetch fails, default to Guest
+        }
+        
+        mysqli_stmt_close($stmt);
+    }
+}
+
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,10 +65,11 @@
         
         nav ul {
             display: flex;
-            gap: 50px;
+            gap: 45px;
             list-style: none;
             padding: 0;
             margin: 0;
+            align-items: center;
         }
         
         nav ul li a {
@@ -54,7 +84,7 @@
         
         nav ul li a:hover {
             transform: scale(1.2); /* Zoom effect */
-            color:rgb(134, 49, 10); /* Optional color change */
+            color: rgb(134, 49, 10); /* Optional color change */
         }
 
         /* Optional underline effect on hover */
@@ -71,6 +101,28 @@
 
         nav ul li a:hover::after {
             width: 100%;
+        }
+
+        /* Style for the user info */
+        .user-info {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logout-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c9302c;
         }
     </style>
 </head>
@@ -91,6 +143,16 @@
                 <li><a href="contactus.php">Contact</a></li>
                 <li><a href="admin/package.php">Packages</a></li>
                 <li><a href="hotel.php">Hotels</a></li>
+                
+                <?php if (isset($_SESSION["user_id"])): ?>
+                    <!-- If user is logged in, show name and logout -->
+                    <li class="user-info"> <?php echo htmlspecialchars($firstname); ?>!</li>
+                    <li><a href="logout.php" class="logout-btn">Logout</a></li>
+                <?php else: ?>
+                    <!-- If user is not logged in, show login and sign-up -->
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="sign_up.php">Sign Up</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>
