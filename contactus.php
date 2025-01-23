@@ -65,12 +65,20 @@ include "header.php"
         .contact-form button:hover {
             background-color: #2a4373;
         }
+        body h1{   
+            text-align:center;
+            font-weight:bolder;
+            margin-top:30px;
+            color:coral;
+        }
     </style>
 </head>
 
 <body>
+<h1>Make sure to Contact Us </h1>
     <div class="container">
         <section class="contact-form">
+           
             <h2>Send Us a Message</h2>
             <form action="#" method="post">
                 <label for="name">Your Name</label>

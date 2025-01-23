@@ -56,15 +56,6 @@ if (isset($_GET['page'])) {
         </div>
     </div>
 
-    <?php
-    // PHP Logout
-    if (isset($_POST["logout"])) {
-        session_start();
-        session_destroy();
-        header("Location: ../index.php");
-        exit();
-    }
-    ?>
 
 </body>
 </html>

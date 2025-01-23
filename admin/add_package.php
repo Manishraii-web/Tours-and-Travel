@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 
     $target_file = $target_dir . basename($photo);
     $file_extension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif','webp'];
 
     // Validate image file
     if (!getimagesize($_FILES['photo']['tmp_name'])) {
@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
         die("File is too large. Max size is 5MB.");
     }
     if (!in_array($file_extension, $allowed_extensions)) {
-        die("Only JPG, JPEG, PNG, and GIF files are allowed.");
+        die("Only JPG, JPEG, PNG,  and GIF files are allowed.");
     }
     if (!move_uploaded_file($_FILES['photo']['tmp_name'], $target_file)) {
         die("Error moving uploaded file.");

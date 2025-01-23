@@ -1,30 +1,14 @@
 <?php
-// Include header file
+// Include header and connection files
 include "header.php";
-
-// Include database connection
 include "connection.php";
 
-// Query to count the number of top packages
-$count_sql = "SELECT COUNT(*) AS total_top_packages FROM tourism_packages WHERE package_type = 'top'"; 
-$count_result = $conn->query($count_sql);
-
-if ($count_result) {
-    $count_row = $count_result->fetch_assoc();
-    $total_top_packages = $count_row['total_top_packages'];
-} else {
-    // If error fetching count
-    die("Error fetching total top packages: " . $conn->error);
-}
-
-// Query to fetch the top 4 packages
-$sql = "SELECT * FROM tourism_packages WHERE package_type = 'top' LIMIT 4"; // Adjust based on your column
+// Query to fetch the top packages (initial data display)
+$sql = "SELECT * FROM tourism_packages WHERE package_type = 'top' LIMIT 4";
 $top_packages_result = $conn->query($sql);
 
-// Check if the query returned any results
-if (!$top_packages_result) {
-    die("Error fetching top packages: " . $conn->error);
-}
+// Close the database connection
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -33,40 +17,58 @@ if (!$top_packages_result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
     <style>
-        .sign {
-            /* Add specific styles here if necessary */
+        /* Package styling */
+        .package-category{
+            margin-top:40px;
+            display:flex;
+            justify-content:center;
+            gap:40px;
         }
-        .package {
-            display: inline-block;
-            width: 250px;
-            margin: 20px;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        .package img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .book-btn {
-            display: inline-block;
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-            width: 100%;
-            margin-top: 15px;
-        }
-        .book-btn:hover {
-            background-color: #218838;
-        }
+.packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.image-container {
+    display:flex;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    gap:40px;
+    width:400px;
+}
+
+.image-container img {
+    gap:40px;
+    height: 300px;
+    object-fit: cover;
+   
+}
+
+.image-container:hover {
+    transform: scale(1.05);
+}
+
+.image-container p {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #555;
+}
+
+.image-container .price {
+    color: #3b5998;
+}
+.image-container a{
+    text-decoration: none;
+}
     </style>
 </head>
 
@@ -74,52 +76,118 @@ if (!$top_packages_result) {
     <div class="container">
         <div class="hero">
             <h1>Dream Larger<br>Travel Smarter</h1>
+            <!-- Search bar -->
             <div class="searchbar">
-                <input type="text" name="search" id="search" placeholder="Search here">
+                <!-- Form submits to packages.php with the search query -->
+                <form action="admin/package.php" method="GET" id="search-form">
+                    <input type="text" name="search" id="search" placeholder="Search here"
+                        value="<?php echo isset($_SESSION['search_term']) ? $_SESSION['search_term'] : ''; ?>"> 
+                    <button type="submit">Search</button>
+                </form>
             </div>
         </div>
-
-        <div class="section-header">
-            <h1>TOP PACKAGES</h1>
-            <p>Total Top Packages: <?php echo $total_top_packages; ?></p>
-        </div>
-
+        
         <div class="package-category">
-            <h2>🏆 Top Packages</h2>
-            <?php
-            // Check if there are any packages fetched
-            if ($top_packages_result->num_rows > 0) {
-                // Loop through and display the packages
-                while ($row = $top_packages_result->fetch_assoc()) {
-                    echo '<div class="package">';
-                    // Check and display the image, assuming photo_url stores the relative path
-                    if (!empty($row["photo_url"])) {
-                        echo '<img src="' . htmlspecialchars($row["photo_url"]) . '" alt="Package Image">';
-                    } else {
-                        // Display a default image if photo_url is empty
-                        echo '<img src="admin/img/default-image.jpg" alt="Package Image">';
-                    }
-                    echo '<h3>' . htmlspecialchars($row["package_name"]) . '</h3>'; 
-                    echo '<p>' . htmlspecialchars($row["description"]) . '</p>';
-                    echo '<p><strong>Price:</strong> Rs ' . htmlspecialchars($row["price"]) . '</p>';
-                    echo '<a href="book.php?package_id=' . htmlspecialchars($row["id"]) . '" class="book-btn">Book Now</a>';
-                    echo '</div>';
-                }
-            } else {
-                // If no packages found
-                echo "<p>No Top Packages found.</p>";
-            }
-            ?>
+            <!-- <h2>🏆 Top Packages</h2> -->
+            <!-- <div class="package-grid">  -->
+                <!-- php 
+                // if ($top_packages_result->num_rows > 0) {
+                    // while ($row = $top_packages_result->fetch_assoc()) {
+                        // echo '<div class="package">';
+                        // echo '<a href="package_details.php?package_id=' . $row["id"] . '">'; 
+                        // echo '<img src="../admin/img/' . $row["photo_url"] . '" alt="Package Image">';
+                        // echo '<h3>' . $row["package_name"] . '</h3>';
+                        // echo '<p>' . $row["description"] . '</p>';
+                        // echo '<p><strong>Price:</strong> Rs:' . $row["price"] . '</p>';
+                        // echo '<a href="../book.php?package_id=' . $row["id"] . '" class="book-btn">Book Now</a>';
+                        // echo '</div>';
+                    // }
+                // } else {
+                    // echo "<p>No Top Packages found.</p>";
+                // }
+                // ?>
+             </div> -->
+     <div class="package-category">
+    <div class="image-container">
+        <a href="admin/package.php">
+        <img src="swambu.jpg" alt="Swambunath">
+        <p>Swoyambhunath Stupa</p> </a>
+    </div>
+   
+    <div class="image-container">
+        <a href="admin/package.php">
+        <img src="skudive.jpg" alt="Mt. Everest">
+        <p>Bungee Jumping</p>
+         </a>
+
+         </div>
+         <div class="image-container">
+
+        <a href="admin/package.php">
+        <img src="janakpur.webp" alt="Janaki Temple"> 
+        <p>Janaki Temple</p>
+       </a>
+    </div>
+     </div>
         </div>
     </div>
-</body>
 
+    <!-- Suggestions box -->
+    <div id="suggestions"></div>
+
+    <!-- JavaScript for AJAX Search and Enter Key handling -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // When the user types in the search bar
+            $('#search').keyup(function() {
+                let query = $(this).val(); // Get the input value
+                if (query.length > 2) { // Start searching after 3 characters
+                    $.ajax({
+                        url: 'search_suggestions.php', // PHP script for handling the search
+                        method: 'GET',
+                        data: { search: query }, // Send the search term as a query parameter
+                        success: function(response) {
+                            if (response.trim().length > 0) {
+                                $('#suggestions').html(response).show(); // Display suggestions
+                            } else {
+                                $('#suggestions').hide(); // Hide if no results
+                            }
+                        },
+                        error: function() {
+                            console.log("Error in AJAX request");
+                        }
+                    });
+                } else {
+                    $('#suggestions').hide(); // Hide suggestions if input is less than 3 characters
+                }
+            });
+
+            // When a user clicks a suggestion
+            $(document).on('click', '.suggestion-item', function() {
+                let package_id = $(this).data('id');
+                window.location.href = 'package_details.php?package_id=' + package_id; // Redirect to the package details page
+            });
+
+            // When the user presses Enter in the search bar
+            $('#search').keypress(function(e) {
+                if (e.which == 13) {  // Check if Enter key is pressed
+                    let query = $(this).val(); // Get the input value
+                    if (query.length > 2) {
+                        // Manually submit the form to packages.php under the admin folder
+                        $('#search-form').submit(); // Submit the form to packages.php
+                    }
+                }
+            });
+        });
+    </script>
+</body>
 </html>
 
 <?php
-// Close the database connection
-$conn->close();
-
 // Include footer file
 include "footer.php";
+
+// Clear the search term from session after the page is loaded (if not submitting a search)
+unset($_SESSION['search_term']);
 ?>

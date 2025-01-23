@@ -97,7 +97,7 @@ $result = $conn->query($sql);
         button {
             width: 100%;
             padding: 10px;
-            background-color: #3b5998;
+            background-color:rgb(215, 135, 38);
             color: white;
             border: none;
             border-radius: 5px;
@@ -107,7 +107,7 @@ $result = $conn->query($sql);
         }
 
         button:hover {
-            background-color: #2a4373;
+            background-color:rgb(173, 102, 9);
         }
     </style>
 </head>
@@ -127,7 +127,7 @@ $result = $conn->query($sql);
                     echo '<h2>' . $row['hotel_name'] . '</h2>';
                     echo '<p>Location: ' . $row['location'] . '</p>';
                     echo '<p class="price">' . $row['price'] . ' rupees/night</p>';
-                    echo '<button>Book Now</button>';
+                    echo '<button>Link here</button>';
                     echo '</div>';
                     echo '</div>';
                 }

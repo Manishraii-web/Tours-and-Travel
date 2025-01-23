@@ -21,7 +21,7 @@ include "header.php";
         }
 
         .aboutimg {
-            background-image: url('images/muktinath.jpg');
+            background-image: url('bhk.jpg');
             width: 100%;
             height: 600px;
             background-size: cover;

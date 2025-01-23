@@ -1,8 +1,9 @@
 <?php
+session_start(); // ✅ Start session at the very beginning
 include "connection.php"; // ✅ Ensure database connection
 
 // Define variables
-$email = "";
+$email = $password = "";
 $email_err = $password_err = $login_err = "";
 
 // Check if the form is submitted
@@ -29,52 +30,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt) {
             // Bind the email parameter
             mysqli_stmt_bind_param($stmt, "s", $email);
-            
-            // Execute the statement
-            if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_store_result($stmt);
 
-                // Check if email exists
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $user_id, $firstname, $hashed_password);
+            // Check if email exists
+            if (mysqli_stmt_num_rows($stmt) == 1) {
+                // Bind result variables
+                mysqli_stmt_bind_result($stmt, $user_id, $firstname, $hashed_password);
 
-                    if (mysqli_stmt_fetch($stmt)) {
-                        // Verify the password
-                        if (password_verify($password, $hashed_password)) {
-                            // ✅ Password is correct; store user info in session
-                            $_SESSION["user_id"] = $user_id;
-                            $_SESSION["firstname"] = $firstname;
+                if (mysqli_stmt_fetch($stmt)) {
+                    // Verify the password
+                    if (password_verify($password, $hashed_password)) {
+                        // ✅ Password is correct; store user info in session
+                        $_SESSION["user_id"] = $user_id;
+                        $_SESSION["firstname"] = $firstname;
 
-                            // ✅ SUCCESS: Show success message and redirect
-                            echo "<script>
-                                    alert('Login successful! Welcome, " . htmlspecialchars($firstname) . "!');
-                                    window.location.href = 'index.php';
-                                  </script>";
-
-                            // ✅ PHP fallback redirect (in case JavaScript fails)
-                            header("Location: index.php");
-                            exit();
-                        } else {
-                            $login_err = "Invalid email or password.";
-                        }
+                        // ✅ Redirect to homepage after successful login
+                        header("Location: index.php");
+                        exit();
+                    } else {
+                        $login_err = "Invalid email or password.";
                     }
-                } else {
-                    $login_err = "Invalid email or password.";
                 }
             } else {
-                $login_err = "Something went wrong. Please try again later.";
+                $login_err = "Invalid email or password.";
             }
-
             mysqli_stmt_close($stmt);
+        } else {
+            $login_err = "Something went wrong. Please try again later.";
         }
     }
 }
-
 mysqli_close($conn);
 ?>
-<?php include "header.php"; ?>
 
+<?php include "header.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">

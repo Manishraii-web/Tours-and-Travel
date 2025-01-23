@@ -62,7 +62,9 @@ color: darkblue;
 100% { transform: translateX(100%); }
 } */
 
-
+body{
+text-decoration: none;
+}
 .package-container {
     width: 80%;
     margin: auto;
@@ -81,9 +83,10 @@ color: darkblue;
 .package {
     border: 1px solid #ccc;
     padding: 15px;
-    text-align: left;
+    text-align: center;
     background: #f9f9f9;
     border-radius: 8px;
+    text-decoration: none;
 }
 
 .package img {
@@ -94,6 +97,7 @@ color: darkblue;
 }
 
 .book-btn {
+
     display: block;
     width: 50%;
     padding: 10px;

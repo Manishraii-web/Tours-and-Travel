@@ -9,7 +9,8 @@
         <li><a href="?page=report">Reports</a></li>
     </ul>
     <!-- Logout Button -->
-        <button type="submit" name="logout" class="btn">Logout</button>
+    <a href="../logout.php" class="btn">Logout</a>
+
 </div>
 <style> * {
     margin: 0;
@@ -177,5 +178,8 @@ body {
         font-size: 10px;
        
     }
+}
+a {
+    text-decoration: none;
 }
 </style>

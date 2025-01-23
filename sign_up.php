@@ -1,4 +1,8 @@
 <?php
+include 'init.php'; 
+// Rest of your code in sign_up.php 
+?>
+<?php
 // Database Connection
 $servername = "localhost";
 $username = "root";
