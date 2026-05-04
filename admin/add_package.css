@@ -1,125 +1,257 @@
-
-
-body {
-    font-family: Arial, sans-serif;
+/* Modern Admin Panel Styling */
+:root {
+    --primary-color: #ff7043;
+    --primary-dark: #ff5722;
+    --primary-light: #ffccbc;
+    --accent-color: #2196f3;
+    --text-color: #333;
+    --light-text: #757575;
+    --white: #ffffff;
+    --light-bg: #f5f7fa;
+    --border-color: #e0e0e0;
+    --success: #4caf50;
+    --danger: #f44336;
+    --shadow: 0 2px 10px rgba(0,0,0,0.08);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+  }
+  
+  * {
     margin: 0;
     padding: 0;
-    background-color: #f0f2f5;
-}
-
-.header {
-    display: flex;
-    background-color: #34549b;
-    align-items: center;
-    width: 100%;
-    justify-content: flex-start; 
-    height: 60px;
-    position: sticky;
-    top: 0;
-    padding: 0 20px; 
-}
-
-.header img {
-    margin-top: 2px;
-    height: 35px;
-}
-
-.header p {
-    color: white;
-    margin-left: 10px; 
-    font-size: 14px; 
-}
-
-nav ul {
-    display: flex;
-    gap: 20px; 
-    list-style: none;
-    margin-right: 20px; 
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #fff; 
-    transform: scale(1.05);
-}
-
-.container {
-    max-width: 800px; 
-    margin: 50px auto; 
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-bottom: 40px;
+  }
+  
+  h1 {
     text-align: center;
-    margin-bottom: 30px;
-}
-
-form {
+    margin: 30px 0;
+    color: var(--primary-dark);
+    font-size: 32px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  h1:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  /* Form Styling */
+  form {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+  
+  label {
+    font-weight: 600;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: var(--text-color);
+  }
+  
+  input, textarea, select {
     width: 100%;
-}
-
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
+    padding: 12px 15px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 14px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-}
-
-textarea {
-    height: 100px;
-}
-
-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 14px;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-}
-
-button[type="submit"] {
-    background-color: #3498db; 
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
     font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #2980b9;
-}
-
-.contact-info {
-    background-color: #34549b;
-    padding: 10px 20px; 
-    text-align: center; 
-}
-
-.contact-info p {
-    margin: 0;
-    color: white;
-}
-
-.contact-info p i {
-    margin-right: 5px; 
-}
+    transition: var(--transition);
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+  }
+  
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  input[type="file"] {
+    padding: 10px;
+    background-color: var(--light-bg);
+    font-size: 14px;
+  }
+  
+  .add {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .add:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  
+  /* Table Styling */
+  table {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: rgba(0,0,0,0.02);
+  }
+  
+  tr:hover {
+    background-color: rgba(0,0,0,0.05);
+  }
+  
+  td {
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  /* Make description column not too wide */
+  td:nth-child(2) {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Image styling in table */
+  td img {
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    object-fit: cover;
+    height: 70px;
+    width: 100px;
+  }
+  
+  /* Button styling */
+  .delete-btn, .manage-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 3px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: var(--transition);
+  }
+  
+  .delete-btn {
+    background-color: var(--danger);
+    color: var(--white);
+  }
+  
+  .delete-btn:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+  }
+  
+  .manage-btn {
+    background-color: var(--accent-color);
+    color: var(--white);
+  }
+  
+  .manage-btn:hover {
+    background-color: #1976d2;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    form {
+      width: 95%;
+      padding: 20px;
+    }
+    
+    table {
+      width: 95%;
+      display: block;
+      overflow-x: auto;
+    }
+    
+    .delete-btn, .manage-btn {
+      padding: 6px 10px;
+      font-size: 12px;
+      display: block;
+      margin: 5px 0;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+  }
+  
+  /* Additional details styling */
+  h3 {
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+  }
+  
+  p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  
+  /* No packages message */
+  p[style="text-align: center;"] {
+    margin: 30px auto;
+    color: var(--light-text);
+    font-style: italic;
+  }

@@ -1,0 +1,231 @@
+/* Main CSS for tourism package page */
+:root {
+
+    --accent-color: #ff6d00;
+    --light-bg: #f5f7fa;
+    --dark-text: #333;
+    --light-text: #767676;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --border-radius: 12px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0;
+    background: transparent;
+  }
+  
+  .package-header {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    background: var(--white);
+  }
+  
+  .package-header img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    transition: transform 0.5s ease;
+  }
+  
+  .package-header:hover img {
+    transform: scale(1.05);
+  }
+  
+  .package-header h1 {
+    color: var(--dark-text);
+    margin: 20px 25px 10px;
+    font-size: 28px;
+  }
+  
+  .package-header p {
+    padding: 0 25px;
+    color: var(--light-text);
+    margin-bottom: 15px;
+  }
+  
+  .price, .days {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 25px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .price {
+    color: var(--accent-color);
+  }
+  
+  .days {
+    color: var(--primary-color);
+  }
+  
+  .price:before {
+    content: "💰";
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  .days:before {
+    content: "📅";
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  .book-btn {
+    display: inline-block;
+    margin: 15px 25px 25px;
+    padding: 12px 30px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 109, 0, 0.3);
+  }
+  
+  .book-btn:hover {
+    background-color: #e65100;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 109, 0, 0.4);
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    background-color: var(--white);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    box-shadow: var(--shadow);
+    margin-top: 30px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tab {
+    padding: 15px 20px;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--light-text);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .tab:hover, .tab.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+  }
+  
+  .tab-content {
+    display: none;
+    padding: 25px;
+    background: var(--white);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    line-height: 1.7;
+  }
+  
+  .tab-content h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+    padding-bottom: 10px;
+  }
+  
+  .tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      margin: 15px;
+      width: auto;
+    }
+    
+    .package-header h1 {
+      font-size: 24px;
+    }
+    
+    .price, .days {
+      font-size: 16px;
+    }
+    
+    .book-btn {
+      display: block;
+      text-align: center;
+    }
+    
+    .tab {
+      padding: 12px 15px;
+      font-size: 14px;
+    }
+    
+    .tab-content {
+      padding: 15px;
+    }
+  }
+  
+  /* Navigation styling */
+  nav {
+    background-color: var(--primary-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: #f0f0f0;
+  }
+  
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--white);
+  }
+  
+  /* Error message styling */
+  .warning {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 8px 12px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-size: 14px;
+  }

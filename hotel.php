@@ -97,7 +97,7 @@ $result = $conn->query($sql);
         button {
             width: 100%;
             padding: 10px;
-            background-color:rgb(215, 135, 38);
+            background-color: rgb(215, 135, 38);
             color: white;
             border: none;
             border-radius: 5px;
@@ -107,7 +107,7 @@ $result = $conn->query($sql);
         }
 
         button:hover {
-            background-color:rgb(173, 102, 9);
+            background-color: rgb(173, 102, 9);
         }
     </style>
 </head>
@@ -122,12 +122,11 @@ $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {
                     // Display each hotel as a card
                     echo '<div class="hotel-card">';
-                    echo '<img src="admin/uploads/' . $row['image_path'] . '" alt="Hotel Image" class="hotel-image">';
+                    echo '<img src="admin/uploads/' . htmlspecialchars($row['image_path']) . '" alt="Hotel Image" class="hotel-image">';
                     echo '<div class="hotel-info">';
-                    echo '<h2>' . $row['hotel_name'] . '</h2>';
-                    echo '<p>Location: ' . $row['location'] . '</p>';
-                    echo '<p class="price">' . $row['price'] . ' rupees/night</p>';
-                    echo '<button>Link here</button>';
+                    echo '<h2>' . htmlspecialchars($row['hotel_name']) . '</h2>';
+                    echo '<p>Location: ' . htmlspecialchars($row['location']) . '</p>';
+                    echo '<button onclick="window.location.href=\'' . htmlspecialchars($row['hotel_url']) . '\'">Book Now</button>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -139,7 +138,7 @@ $result = $conn->query($sql);
     </div>
 
 <?php
-include"footer.php"
+include "footer.php"
 ?>
 </body>
 </html>

@@ -1,8 +1,5 @@
 <?php
-include 'init.php'; 
-// Rest of your code in sign_up.php 
-?>
-<?php
+
 // Database Connection
 $servername = "localhost";
 $username = "root";
@@ -14,23 +11,20 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-session_start(); // Start session for user management
-
+$errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $firstname = $_POST['firstname'] ?? '';
-    $lastname = $_POST['lastname'] ?? '';
-    $email = $_POST['email'] ?? '';
+    $firstname = trim($_POST['firstname'] ?? '');
+    $lastname = trim($_POST['lastname'] ?? '');
+    $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $cpassword = $_POST['cpassword'] ?? '';
-
-    // Error array for validation
-    $errors = [];
 
     // Validation checks
     if (empty($firstname)) $errors[] = "First Name is required";
     if (empty($lastname)) $errors[] = "Last Name is required";
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid Email is required";
     if (empty($password)) $errors[] = "Password is required";
+    if (strlen($password) < 8) $errors[] = "Password must be at least 8 characters";
     if ($password !== $cpassword) $errors[] = "Passwords do not match";
 
     if (empty($errors)) {
@@ -39,28 +33,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $lastname = mysqli_real_escape_string($conn, $lastname);
         $email = mysqli_real_escape_string($conn, $email);
 
-        // Hash the password for security
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        // Insert data into the database
-        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `datetime`) 
-                VALUES ('$firstname', '$lastname', '$email', '$hashed_password', NOW())";
-
-        if (mysqli_query($conn, $sql)) {
-            // Store session data
-            $_SESSION['user_id'] = mysqli_insert_id($conn);
-            $_SESSION['firstname'] = $firstname;
-
-            // Redirect to the welcome page
-            header("Location: index.php");
-            exit();
+        // Check if email already exists
+        $checkEmail = "SELECT id FROM users WHERE email = '$email'";
+        $result = mysqli_query($conn, $checkEmail);
+        if (mysqli_num_rows($result) > 0) {
+            $errors[] = "Email is already registered";
         } else {
-            $errors[] = "Error: " . mysqli_error($conn);
+            // Hash the password
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            
+            // Insert data into the database
+            $sql = "INSERT INTO users (firstname, lastname, email, password, datetime) 
+                    VALUES ('$firstname', '$lastname', '$email', '$hashed_password', NOW())";
+
+            if (mysqli_query($conn, $sql)) {
+                $_SESSION['user_id'] = mysqli_insert_id($conn);
+                $_SESSION['firstname'] = $firstname;
+                
+                // Redirect to the welcome page
+                header("Location: index.php");
+                exit();
+            } else {
+                $errors[] = "Error: " . mysqli_error($conn);
+            }
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,13 +70,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="container">
-        <?php
-        include"header.php"
-        ?>
+        <?php include "header.php"; ?>
         <div class="top">
             <h1>SIGNUP</h1>
             <?php if (!empty($errors)) { ?>
-                <p id="error-message"><?= implode(". ", $errors) ?></p>
+                <div id="error-message">
+                    <ul>
+                        <?php foreach ($errors as $error) echo "<li>" . htmlspecialchars($error) . "</li>"; ?>
+                    </ul>
+                </div>
             <?php } ?>
             <form method="POST" id="form" action="sign_up.php">
                 <div>
@@ -102,6 +103,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </body>
 </html>
-<?php
-include"footer.php"
-?>
+<?php include "footer.php"; ?>

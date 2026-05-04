@@ -64,7 +64,7 @@ table {
 
 /* Table Header */
 th {
-    background-color: #007BFF;
+    background-color:coral;
     color: white;
     padding: 10px;
     text-align: left;
@@ -80,7 +80,7 @@ td {
 
 /* Table Row Hover Effect */
 tr:hover {
-    background-color: #f1f1f1;
+    background-color:rgb(218, 176, 176);
 }
 
 /* No Bookings Message */
@@ -94,7 +94,7 @@ p {
 a {
     display: inline-block;
     margin-top: 20px;
-    background-color: #007BFF;
+    background-color:rgb(199, 123, 24);
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -105,7 +105,7 @@ a {
 }
 
 a:hover {
-    background-color: #0056b3;
+    background-color:rgb(179, 87, 0);
 }
 
     </style>
@@ -131,7 +131,7 @@ a:hover {
                         <td><?php echo $row['package_name']; ?></td>
                         <td><?php echo $row['num_persons']; ?></td>
                         <td><?php echo $row['booking_date']; ?></td>
-                        <td><?php echo '$' . number_format($row['price'], 2); ?></td> <!-- Display the price -->
+                        <td><?php echo 'Rs.' . number_format($row['price'], 2); ?></td> <!-- Display the price -->
                     </tr>
                 <?php endwhile; ?>
             </tbody>

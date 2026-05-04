@@ -73,7 +73,7 @@ if (isset($_POST['update_user'])) {
             border: 1px solid #ddd;
         }
         th {
-            background-color: #f4f4f4;
+            background-color: coral
         }
         button {
             padding: 5px 10px;

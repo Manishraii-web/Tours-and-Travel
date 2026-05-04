@@ -79,7 +79,7 @@ mysqli_close($conn);
     <div class="Heading">
         <div class="TOGETHER-name-logo">
             <div class="Logo">
-                <img src="logoo.png" alt="logo">
+                <img src="images/logoo.png" alt="logo">
             </div>
             <div class="web-name">
                 <h1>Hamro Yatra</h1>

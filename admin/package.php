@@ -42,6 +42,17 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="package.css">
+    <style>
+        .package .days {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            color: #ff6600;
+            font-size: 16px;
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -58,10 +69,10 @@ $conn->close();
                         echo '<div class="package">';
                         echo '<a href="package_details.php?package_id=' . $row["id"] . '">';
                         echo '<img src="' . $row["photo_url"] . '" alt="Package Image">';
-                        echo '<h3>' . $row["package_name"] . '</h3>';
-                        echo '<p>' . $row["description"] . '</p>';
-                        echo '<p><strong>Price:</strong> Rs:' . $row["price"] . '</p>';
-                        echo '<a href="../book.php?package_id=' . $row["id"] . '" class="book-btn">Book Now</a>';
+                        echo '<h3>' . htmlspecialchars($row["package_name"]) . '</h3>';
+                        echo '<p1><strong>Price:</strong> Rs:' . number_format($row["price"], 2) . '</p1>';
+                        echo '<span class="days">📅 ' . htmlspecialchars($row["days"]) . ' Days</span>';
+                        echo '<a href="package_details.php?package_id=' . $row["id"] . '" class="book-btn">Book Now</a>'; // Updated here
                         echo '</a>';
                         echo '</div>';
                     }
@@ -82,10 +93,10 @@ $conn->close();
                         echo '<div class="package">';
                         echo '<a href="package_details.php?package_id=' . $row["id"] . '">';
                         echo '<img src="' . $row["photo_url"] . '" alt="Package Image">';
-                        echo '<h3>' . $row["package_name"] . '</h3>';
-                        echo '<p>' . $row["description"] . '</p>';
-                        echo '<p><strong>Price:</strong> Rs:' . $row["price"] . '</p>';
-                        echo '<a href="../book.php?package_id=' . $row["id"] . '" class="book-btn">Book Now</a>';
+                        echo '<h3>' . htmlspecialchars($row["package_name"]) . '</h3>';
+                        echo '<p1><strong>Price:</strong> Rs:' . number_format($row["price"], 2) . '</p1>';
+                        echo '<span class="days">📅 ' . htmlspecialchars($row["days"]) . ' Days</span>';
+                        echo '<a href="package_details.php?package_id=' . $row["id"] . '" class="book-btn">Book Now</a>'; // Updated here
                         echo '</a>';
                         echo '</div>';
                     }

@@ -6,6 +6,7 @@
         <li><a href="?page=manage_users">Manage Users</a></li>
         <li><a href="?page=manage_booking">View Bookings</a></li>
         <li><a href="?page=manage_hotel">Manage Hotels</a></li>
+        <li><a href="?page=suggestion">suggestion</a></li>
         <li><a href="?page=report">Reports</a></li>
     </ul>
     <!-- Logout Button -->

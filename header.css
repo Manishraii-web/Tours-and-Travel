@@ -3,7 +3,10 @@ body {
     font-family: Arial, sans-serif;
 }
 .Heading {
-    background-color: rgba(247, 111, 47, 0.5);
+    background-image: url('images/banner.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px 60px;
     display: flex;
     justify-content: space-between;
@@ -20,7 +23,7 @@ body {
 .web-name h1 {
     font-size: 25px;
     margin-left: 15px;
-    color: #333;
+    color: #fff; /* Changed to white for better visibility on image background */
 }
 
 nav ul {
@@ -33,7 +36,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: black;
+    color: white; /* Changed to white for better visibility on image background */
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
@@ -44,7 +47,7 @@ nav ul li a {
 
 nav ul li a:hover {
     transform: scale(1.2); /* Zoom effect */
-    color: rgb(134, 49, 10); 
+    color: rgb(255, 200, 180); /* Adjusted for better visibility on darker background */
 }
 /* Optional underline effect on hover */
 nav ul li a::after {
@@ -64,7 +67,7 @@ nav ul li a:hover::after {
 .user-info {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: #fff; /* Changed to white for better visibility on image background */
 }
 .logout-btn {
     background-color: #d9534f;

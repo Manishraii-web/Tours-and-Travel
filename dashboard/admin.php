@@ -3,11 +3,11 @@ require_once("database.php");
 session_start(); 
 
 // If the admin is already logged in, redirect to the admin panel
-if (isset($_SESSION['AdminLoginId'])) {
-    header("Location: panel.php");
-    exit();
-}
-
+// if (isset($_SESSION['AdminLoginId'])) {
+    // header("Location: panel.php");
+    // exit();
+// }
+// 
 ?>
 
 <!DOCTYPE html>

@@ -172,7 +172,7 @@ nav ul li a:hover::after {
         <li><a href="../aboutus.php">About us</a></li>
         <li><a href="../contactus.php">Contact</a></li>
         <li><a href="package.php">Package</a></li>
-        <li><a href="../hotel.php">HOtels</a></li>
+        <li><a href="../hotel.php">Hotels</a></li>
 
         <?php if (isset($_SESSION["user_id"])): ?>
             <li class="user-dropdown">

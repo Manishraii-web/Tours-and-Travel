@@ -1,6 +1,45 @@
 <?php
 include "header.php"
 ?>
+<?php
+//... your header.php inclusion and html code
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $message = $_POST["message"];
+
+    // Database connection details
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "tourism";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and execute the SQL query
+    $sql = "INSERT INTO ContactMessages (name, email, message) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $name, $email, $message); // sss means 3 strings
+
+    if ($stmt->execute()) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+
+//...your footer.php and html code.
+?>
 <!DOCTYPE html>
 <html lang="en">
 
